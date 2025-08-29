@@ -49,7 +49,7 @@
           "install_type": "fullstack",
           "working_directory": "solutions/secure-bucket",
           "compliance": {
-            "authority": "scc-v3",
+            "authority": "scc-wp-v1",
             "profiles": [
               {
                 "profile_name": "IBM Cloud Framework for Financial Services",
