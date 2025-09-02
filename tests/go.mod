@@ -1,4 +1,4 @@
-module github.com/terraform-ibm-modules/terraform-ibm-module-template
+module github.com/terraform-ibm-modules/ibmcloud-epx-iac-demo
 
 go 1.24.0
 
