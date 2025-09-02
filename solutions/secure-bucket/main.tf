@@ -25,11 +25,7 @@ module "kms_key_crn_parser" {
 
 locals {
   existing_kms_instance_guid = module.kms_key_crn_parser.service_instance
-  kms_region                 = module.kms_key_crn_parser.region
-  kms_service_name           = module.kms_key_crn_parser.service_name
-  kms_account_id             = module.kms_key_crn_parser.account_id
   kms_key_crn                = var.existing_kms_key_crn
-  kms_key_id                 = module.kms_key_crn_parser.resource
 }
 
 #######################################################################################################################
@@ -87,62 +83,3 @@ module "cos" {
   # - metrics monitoring
   # - retention rule
 }
-
-/*
-module "cos_bucket" {
-  source  = "terraform-ibm-modules/cos/ibm//modules/buckets"
-  version = "10.2.7"
-  bucket_configs = [
-    {
-      # example of forcing a prefix or suffix for naming
-      bucket_name            = "demo-${var.bucket_name}"
-      add_bucket_name_suffix = true
-
-      # force encryption
-      kms_encryption_enabled        = true
-      kms_guid                      = local.existing_kms_instance_guid
-      kms_key_crn                   = local.kms_key_crn
-      skip_iam_authorization_policy = true
-
-      # force region
-      region_location = local.deployment_region
-
-      # keep endpoints private (internal IBM Cloud traffic only)
-      management_endpoint_type = "public"
-
-      resource_instance_id = var.existing_cos_instance_crn
-
-      # force some of the bucket properties including lifecycle
-      storage_class             = "standard"
-      force_delete              = false
-      hard_quota                = 107374182400 # 100 GB limit
-      object_locking_enabled    = true
-      object_lock_duration_days = 30 # 1 month immutable
-
-      archive_rule = {
-        enable = true
-        days   = 30
-        type   = "Glacier"
-      }
-
-      expire_rule = {
-        enable = true
-        days   = 365 # Delete after 1 year
-      }
-
-      object_versioning = {
-        enable = true
-      }
-
-      # could also include other bucket lifecycle and monitoring settings such as
-      # - activity_tracking
-      # - metrics_monitoring
-      # - retention_rule
-    }
-  ]
-}
-
-resource "ibm_resource_tag" "cos_bucket_tags" {
-  resource_id = var.existing_cos_instance_crn
-  tags        = ["owner-team-email:xxxxyyyy.zzz"]
-}*/
