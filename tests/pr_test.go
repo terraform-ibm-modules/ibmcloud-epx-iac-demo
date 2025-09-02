@@ -6,10 +6,10 @@ import (
 )
 
 // Use existing resource group
-const resourceGroup = "geretain-test-resources"
+// const resourceGroup = "geretain-test-resources"
 
 // Ensure every example directory has a corresponding test
-const bucketSolutionDir = "solutions/secure-cos-bucket"
+// const bucketSolutionDir = "solutions/secure-cos-bucket"
 
 // Consistency test for the basic example
 func TestRunSecureBucketSolution(t *testing.T) {
