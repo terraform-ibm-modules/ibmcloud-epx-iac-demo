@@ -43,7 +43,7 @@ locals {
 
 module "cos" {
   source            = "terraform-ibm-modules/cos/ibm"
-  version           = "10.2.13"
+  version           = "10.2.14"
   resource_group_id = module.resource_group.resource_group_id
   cos_instance_name = "${var.bucket_name}-cos"
   cos_tags          = local.final_cos_tag_list
