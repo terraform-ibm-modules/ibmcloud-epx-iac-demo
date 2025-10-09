@@ -34,4 +34,3 @@ variable "action_list" {
   type        = string
   description = "A linefeed separated list of action IDs that you want to add to your custom role. The action IDs vary by service."
 }
-
