@@ -148,6 +148,7 @@
         "ibm_created",
         "target_terraform",
         "terraform",
+        "security",
         "solution"
       ],
       "keywords": [

@@ -22,4 +22,5 @@ resource "ibm_iam_custom_role" "custom" {
   display_name = coalesce(var.role_display_name, var.role_name)
   service      = var.service_name
   actions      = local.actions_clean_array
+  description  = var.role_description
 }
