@@ -139,6 +139,120 @@
           "terraform_version": "1.10.5"
         }
       ]
+    },
+    {
+      "name": "deploy-arch-ibm-custom-role",
+      "label": "IAM Custom Role",
+      "product_kind": "solution",
+      "tags": [
+        "ibm_created",
+        "target_terraform",
+        "terraform",
+        "security",
+        "solution"
+      ],
+      "keywords": [
+        "terraform",
+        "solution",
+        "IaC",
+        "infrastructure as code"
+      ],
+      "short_description": "Creates an IAM Custom Role with supplied newline formatted actions list",
+      "long_description": "Creates an IAM Custom Role with supplied newline formatted actions list.",
+      "support_details": "This product is in the community registry, as such support is handled through the originated repo. If you experience issues please open an issue in this repository [here](https://github.com/terraform-ibm-modules/terraform-ibm-cos/issues). Please note this product is not supported via the IBM Cloud Support Center.",
+      "offering_docs_url": "https://github.com/terraform-ibm-modules/ibmcloud-epx-iac-demo/blob/main/README.md",
+      "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/documentation/main/icons/security_icon.svg",
+      "provider_name": "IBM",
+      "features": [
+        {
+          "title": "IAM Custom Role",
+          "description": "Create custom role for supplied service and action list."
+        }
+      ],
+      "flavors": [
+        {
+          "label": "Custom Role",
+          "name": "iam-custom-role",
+          "index": 1,
+          "install_type": "fullstack",
+          "working_directory": "solutions/custom-role",
+          "compliance": {
+            "authority": "scc-v3",
+            "controls": [],
+            "profiles": [
+              {
+                "profile_name": "IBM Cloud Framework for Financial Services",
+                "profile_version": "1.7.0"
+              }
+            ]
+          },
+          "iam_permissions": [
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "All Account Management services",
+              "notes": "Administrator access is required to create and delete resource groups."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "All Identity and Access enabled services",
+              "notes": "[Optional] Required if context-based restrictions are created which can be turned on by using the `provision_cbr` input variable."
+            }
+          ],
+          "architecture": {
+            "features": [
+              {
+                "title": " ",
+                "description": "Creates resource groups, account-level IAM settings, trusted profiles, and context-based restriction rules."
+              }
+            ],
+            "diagrams": [
+              {
+                "diagram": {
+                  "caption": "Cloud automation for account configuration",
+                  "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-account-infrastructure-base/main/reference-architectures/base-account-enterprise.svg",
+                  "type": "image/svg+xml"
+                },
+                "description": "Cloud automation for account configuration provides a standardized approach to configure cloud account settings as outlined in the IBM Cloud Framework for Financial Services. The deployable architecture includes configurations for IAM account settings and resource organization that enforce security best practices. You can use this deployable architecture as a base for deploying additional services and resources in multiple types of accounts, such as administrative or workload accounts."
+              }
+            ]
+          },
+          "configuration": [
+            {
+              "key": "ibmcloud_api_key"
+            },
+            {
+              "key": "role_name",
+              "required": true
+            },
+            {
+              "key": "role_display_name"
+            },
+            {
+              "key": "role_description"
+            },
+            {
+              "key": "service_name",
+              "required": true
+            },
+            {
+              "key": "action_list",
+              "custom_config": {
+                "type": "textarea",
+                "grouping": "deployment",
+                "original_grouping": "deployment"
+              },
+              "required": true
+            }
+          ],
+          "dependencies": [],
+          "dependency_version_2": true,
+          "terraform_version": "1.10.5"
+        }
+      ]
     }
   ]
 }
