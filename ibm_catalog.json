@@ -45,6 +45,7 @@
         {
           "label": "Compliant Instance and Bucket",
           "name": "compliant-bucket-demo",
+          "short_description": "Provisions an IBM Cloud Framework for Financial Services compliant Object Storage instance and bucket",
           "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/secure-bucket",
@@ -174,6 +175,7 @@
         {
           "label": "Custom Role",
           "name": "iam-custom-role",
+          "short_description": "Provisions an IBM Cloud IAM custom role",
           "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/custom-role",
