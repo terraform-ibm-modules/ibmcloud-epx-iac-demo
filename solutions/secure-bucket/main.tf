@@ -19,7 +19,7 @@ module "resource_group" {
 #######################################################################################################################
 module "kms_key_crn_parser" {
   source  = "terraform-ibm-modules/common-utilities/ibm//modules/crn-parser"
-  version = "1.3.7"
+  version = "1.4.1"
   crn     = var.existing_kms_key_crn
 }
 
@@ -43,7 +43,7 @@ locals {
 
 module "cos" {
   source            = "terraform-ibm-modules/cos/ibm"
-  version           = "10.8.5"
+  version           = "10.9.1"
   resource_group_id = module.resource_group.resource_group_id
   cos_instance_name = "${var.bucket_name}-cos"
   cos_tags          = local.final_cos_tag_list
