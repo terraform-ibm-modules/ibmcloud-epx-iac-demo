@@ -26,8 +26,12 @@ TODO: Replace this with a description of the modules in this repo.
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
 ## Overview
-* [ibmcloud-epx-iac-demo](#ibmcloud-epx-iac-demo)
-* [Contributing](#contributing)
+<ul>
+  <li><a href="#ibmcloud-epx-iac-demo">ibmcloud-epx-iac-demo</a></li>
+  <li><a href="./solutions">Deployable Architectures</a>
+  </li>
+  <li><a href="#contributing">Contributing</a></li>
+</ul>
 <!-- END OVERVIEW HOOK -->
 
 

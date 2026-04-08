@@ -9,23 +9,9 @@ locals {
 
 module "resource_group" {
   source  = "terraform-ibm-modules/resource-group/ibm"
-  version = "1.4.7"
+  version = "1.5.0"
   # could be input variable, or could be set here to force specific resource group
   existing_resource_group_name = "Default"
-}
-
-#######################################################################################################################
-# KMS Key
-#######################################################################################################################
-module "kms_key_crn_parser" {
-  source  = "terraform-ibm-modules/common-utilities/ibm//modules/crn-parser"
-  version = "1.4.1"
-  crn     = var.existing_kms_key_crn
-}
-
-locals {
-  existing_kms_instance_guid = module.kms_key_crn_parser.service_instance
-  kms_key_crn                = var.existing_kms_key_crn
 }
 
 #######################################################################################################################
@@ -43,7 +29,7 @@ locals {
 
 module "cos" {
   source            = "terraform-ibm-modules/cos/ibm"
-  version           = "10.9.9"
+  version           = "10.14.10"
   resource_group_id = module.resource_group.resource_group_id
   cos_instance_name = "${var.bucket_name}-cos"
   cos_tags          = local.final_cos_tag_list
@@ -54,8 +40,7 @@ module "cos" {
 
   # force encryption
   kms_encryption_enabled        = true
-  existing_kms_instance_guid    = local.existing_kms_instance_guid
-  kms_key_crn                   = local.kms_key_crn
+  kms_key_crn                   = var.existing_kms_key_crn
   skip_iam_authorization_policy = true
 
   # force region
