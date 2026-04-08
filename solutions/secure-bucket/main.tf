@@ -15,20 +15,6 @@ module "resource_group" {
 }
 
 #######################################################################################################################
-# KMS Key
-#######################################################################################################################
-module "kms_key_crn_parser" {
-  source  = "terraform-ibm-modules/common-utilities/ibm//modules/crn-parser"
-  version = "1.4.3"
-  crn     = var.existing_kms_key_crn
-}
-
-locals {
-  existing_kms_instance_guid = module.kms_key_crn_parser.service_instance
-  kms_key_crn                = var.existing_kms_key_crn
-}
-
-#######################################################################################################################
 # COS Instance
 #######################################################################################################################
 
@@ -54,8 +40,7 @@ module "cos" {
 
   # force encryption
   kms_encryption_enabled        = true
-  existing_kms_instance_guid    = local.existing_kms_instance_guid
-  kms_key_crn                   = local.kms_key_crn
+  kms_key_crn                   = var.existing_kms_key_crn
   skip_iam_authorization_policy = true
 
   # force region
