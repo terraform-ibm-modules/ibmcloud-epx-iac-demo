@@ -9,7 +9,7 @@ locals {
 
 module "resource_group" {
   source  = "terraform-ibm-modules/resource-group/ibm"
-  version = "1.6.0"
+  version = "1.6.1"
   # could be input variable, or could be set here to force specific resource group
   existing_resource_group_name = "Default"
 }
@@ -29,10 +29,10 @@ locals {
 
 module "cos" {
   source            = "terraform-ibm-modules/cos/ibm"
-  version           = "10.15.2"
+  version           = "10.16.4"
   resource_group_id = module.resource_group.resource_group_id
   cos_instance_name = "${var.bucket_name}-cos"
-  cos_tags          = local.final_cos_tag_list
+  resource_tags     = local.final_cos_tag_list
 
   # example of forcing a prefix or suffix for naming
   bucket_name            = "demo-${var.bucket_name}"
