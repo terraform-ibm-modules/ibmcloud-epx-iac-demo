@@ -32,7 +32,7 @@ module "cos" {
   version           = "10.16.4"
   resource_group_id = module.resource_group.resource_group_id
   cos_instance_name = "${var.bucket_name}-cos"
-  cos_tags          = local.final_cos_tag_list
+  resource_tags     = local.final_cos_tag_list
 
   # example of forcing a prefix or suffix for naming
   bucket_name            = "demo-${var.bucket_name}"
