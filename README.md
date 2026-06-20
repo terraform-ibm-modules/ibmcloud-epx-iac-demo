@@ -28,7 +28,7 @@ TODO: Replace this with a description of the modules in this repo.
 ## Overview
 <ul>
   <li><a href="#ibmcloud-epx-iac-demo">ibmcloud-epx-iac-demo</a></li>
-  <li><a href="./solutions">Deployable Architectures</a>
+  <li><a href="https://github.com/terraform-ibm-modules/ibmcloud-epx-iac-demo/tree/main/solutions">Deployable Architectures</a>
   </li>
   <li><a href="#contributing">Contributing</a></li>
 </ul>
